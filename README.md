@@ -19,10 +19,10 @@ The server program executes the following task:
     Receive multiple requests from the client program using sockets. Therefore, the server program creates a child process for each request to handle them simultaneously. For this reason, the parent process must handle zombie processes by implementing the fireman() function call (unless you can determine the number of requests the server program receives from the client program). 
 
 Each child process executes the following tasks:
-    1. Receive the encoded message, the assigned symbol, and the sum of the frequencies for the symbols assigned to the previous threads on the client program.
-    2. Determines the positions of the assigned symbol in the original message.
-    3. Calculates the number of bits used to represent the symbol's position using Elias Gamma encoding.
-    4. Send the positions and the number of bits used to represent the symbol's positions to the client program using sockets.
+    1. Receive the encoded message, the assigned symbol, and the sum of the frequencies for the symbols assigned to the previous threads on the client program.\
+    2. Determines the positions of the assigned symbol in the original message.\
+    3. Calculates the number of bits used to represent the symbol's position using Elias Gamma encoding.\
+    4. Send the positions and the number of bits used to represent the symbol's positions to the client program using sockets.\
 
 The client program:
  
