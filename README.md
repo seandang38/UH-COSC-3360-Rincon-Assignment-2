@@ -1,7 +1,7 @@
 Objective:\
 This assignment will introduce you to interprocess communication mechanisms in UNIX using sockets.\
 Problem:\
-You must write two programs to implement a distributed version of the multithreaded program you created for programming assignment 1. These programs should find the positions of the symbols in the original message, reconstruct the original message (based on the encoded message), and determine the number of bits required to represent the positions using Elias-Gamma encoding. \
+You must write two programs to implement a distributed version of the multithreaded program you created for programming assignment 1. These programs should find the positions of the symbols in the original message, reconstruct the original message (based on the encoded message), and determine the number of bits required to represent the positions using Elias-Gamma encoding. 
 
 These programs are:
 
@@ -15,32 +15,32 @@ where exec_filename is the name of your executable file, and port_no is the port
  
 The server program receives no input from STDIN and prints no messages to STDOUT.
  
-The server program executes the following task:\
-    Receive multiple requests from the client program using sockets. Therefore, the server program creates a child process for each request to handle them simultaneously. For this reason, the parent process must handle zombie processes by implementing the fireman() function call (unless you can determine the number of requests the server program receives from the client program). \
+The server program executes the following task:
+    Receive multiple requests from the client program using sockets. Therefore, the server program creates a child process for each request to handle them simultaneously. For this reason, the parent process must handle zombie processes by implementing the fireman() function call (unless you can determine the number of requests the server program receives from the client program). 
 
 Each child process executes the following tasks:\
     1. Receive the encoded message, the assigned symbol, and the sum of the frequencies for the symbols assigned to the previous threads on the client program.\
     2. Determines the positions of the assigned symbol in the original message.\
     3. Calculates the number of bits used to represent the symbol's position using Elias Gamma encoding.\
-    4. Send the positions and the number of bits used to represent the symbol's positions to the client program using sockets.\
+    4. Send the positions and the number of bits used to represent the symbol's positions to the client program using sockets.
 
-The client program:\
+The client program:
  
-The user will execute this program using the following syntax:\
+The user will execute this program using the following syntax:
  
-./exec_filename hostname port_no < input_filename\
+./exec_filename hostname port_no < input_filename
  
-where exec_filename is the name of your executable file, hostname is the address where the server program is located, port_no is the port number used by the server program, and input_filename is the name of the input file. The hostname and the port number will be available to the client as command-line arguments.\
+where exec_filename is the name of your executable file, hostname is the address where the server program is located, port_no is the port number used by the server program, and input_filename is the name of the input file. The hostname and the port number will be available to the client as command-line arguments.
  
-The client program receives multiline input in accordance with the specifications for Programming Assignment 1.\
+The client program receives multiline input in accordance with the specifications for Programming Assignment 1.
  
-Input example:\
+Input example:
 4                       \
 A 5                    \
 C 2                   \
 B 2                    \
 D 3                       \
-10100010000010000001010001100011100010010010100010110110001100 \
+10100010000010000001010001100011100010010010100010110110001100 
  
 After reading the information from STDIN, the program must create n child threads (where n is the alphabet size). Each child thread executes the following tasks: \
     1. Receives the encoded message, the symbol to decode, and the information needed to find the positions of the assigned symbol in the encoded message.\
@@ -64,9 +64,9 @@ Symbol: B, Frequency: 2                                          \
 Positions: 4 10                                                  \
 Bits to represent the position(s): 12                             
 
-Symbol: C, Frequency: 2                                          
-\Positions: 2 11 
-\Bits to represent the position(s): 10
+Symbol: C, Frequency: 2                                          \
+Positions: 2 11                                                   \
+Bits to represent the position(s): 10
 
 Decoded message: AACABDDADABC
 
