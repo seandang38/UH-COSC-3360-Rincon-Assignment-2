@@ -36,8 +36,11 @@ int main( int argc, char *argv[]) {
         exit(1);
     }
     
-    int opt = 1;
-    setsockopt(sockfd, SOL_SOCKET, SO_REUSEADDR, &opt, sizeof(opt));
+    int yes=1;
+    if (setsockopt(sockfd, SOL_SOCKET, SO_REUSEADDR, &yes, sizeof(yes)) == -1) {
+        perror("setsockopt");
+        exit(1);
+    }
     
     //Populate the sockaddr_in structure
     bzero((char *)&serv_addr, sizeof(serv_addr));
