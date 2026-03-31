@@ -35,14 +35,14 @@ int main( int argc, char *argv[]) {
         std::cerr << "ERROR opening socket\n";
         exit(1);
     }
-    
+    /*
     int yes=1;
     if (setsockopt(sockfd, SOL_SOCKET, SO_REUSEADDR, &yes, sizeof(yes)) == -1) {
         perror("setsockopt");
         exit(1);
     }
-    
-    //Populate the sockaddr_in structure (this is rincon's code)
+    */
+    //Populate the sockaddr_in structure
     bzero((char *)&serv_addr, sizeof(serv_addr));
     portno = atoi(argv[1]);
     serv_addr.sin_family = AF_INET;
